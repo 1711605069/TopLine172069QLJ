@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.HomeFragment">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/slidingAdvertBanner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
     <!-- TODO: Update blank fragment layout -->
-    <com.itheima.PullToRefreshView
+    <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#f6f6f6">
-        <com.itheima.topline.view.WrapRecyclerView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+ <!--       <Te
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            android:fadingEdge="none" />
-    </com.itheima.PullToRefreshView>
-</FrameLayout>
+            android:fadingEdge="none" />-->
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

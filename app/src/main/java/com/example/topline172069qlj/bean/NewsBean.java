@@ -5,10 +5,20 @@ public class NewsBean implements java.io.Serializable{//P83
     private int id;
     private int type;
     private String newsName;
+    private String newsTypeName;
     private String img1;
     private String img2;
     private String img3;
     private String newsUrl;
+    public String getNewsTypeName() {
+        return newsTypeName;
+    }
+
+    public void setNewsTypeName(String newsTypeName) {
+        this.newsTypeName = newsTypeName;
+    }
+
+
 
     public int getId() {
         return id;
