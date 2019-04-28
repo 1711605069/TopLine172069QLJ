@@ -18,6 +18,7 @@ public class WrapRecyclerView extends RecyclerView {
     public WrapRecyclerView(@NonNull Context context, WrapAdapter mwrapAdapter) {
         super(context);
         this.mwrapAdapter = mwrapAdapter;
+        //
     }
 
     public WrapRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, WrapAdapter mwrapAdapter) {

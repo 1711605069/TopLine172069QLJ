@@ -25,4 +25,14 @@ public class JsonParse {//p68 单例模式，只有一个对象 对象由构造�
         return alList;
 
     }
+    public List<NewsBean> getNewsList(String json){
+        //使用gson库解析JSON数据
+        Gson gson=new Gson();
+        //创建一个TypeToken的匿名子类对象，并调用对象的getType（）方法
+        Type listType=new TypeToken<List<NewsBean>>(){
+        }.getType();
+        //把获取到的信息集合存到newsList中
+        List<NewsBean> newsList=gson.fromJson(json,listType);
+        return newsList;
+    }
 }

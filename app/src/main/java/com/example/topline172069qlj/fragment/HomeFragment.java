@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
         okHttpClient=new OkHttpClient();
         mHandler=new MHandler();
         getADData();
+        getNewsData();
         View view=initView(inflater,container);
         return view;
     }
@@ -73,6 +74,17 @@ public class HomeFragment extends Fragment {
                         if (ad1!=null){
                             if (ad1.size()>0){
                                 ada.setData(ad1);
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    if (msg.obj!=null){
+                        String newsResult=(String) msg.obj;
+                        List<NewsBean> nb1=JsonParse.getInstance().getNewsList(newsResult);
+                        if (nb1!=null){
+                            if (nb1.size()>0){
+                                adapter.setData(nb1);
                             }
                         }
                     }
@@ -102,12 +114,32 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void getNewsData(){//读取新闻Json数据
+        final Request request=new Request.Builder().url(Constant.WEB_SLTE+
+                Constant.REQUEST_NEWS_URL).build();
+        Call call=okHttpClient.newCall(request);
+        call.enqueue(new Callback() {//开启异步线程访问网络
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+            String res=response.body().string();
+                Message msg=new Message();
+            msg.what=2;
+            msg.obj=res;
+            mHandler.sendMessage(msg);
+            }
+        });
+    }
     private View initView(LayoutInflater inflater, ViewGroup container) {
       View view=inflater.inflate(R.layout.fragment_home,container,false);
       mPullToRefreshView=view.findViewById(R.id.pull_to_refresh);
       recycleView =view.findViewById(R.id.recycler_view);
       recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-      adapter=new HomeListAdapter();
+      adapter=new HomeListAdapter(getActivity());//列表数据适配器
       recycleView.setAdapter(adapter);
       View headView=inflater.inflate(R.layout.head_view,container,false);
       //recycleView.addHeaderView(headView);//添加头部
