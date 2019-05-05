@@ -48,12 +48,12 @@ public class WrapRecyclerView extends RecyclerView {
         }
 
     }
-    public void addHeaderView(View view){
-        if (null==view){
+    public void addHeaderView(View view) {
+        if (null == view) {
             throw new IllegalArgumentException("the view to add must not be null!");
-        }else if (mwrapAdapter==null){
+        } else if (mwrapAdapter == null) {
             mTmpHeaderView.add(view);
-        }else {
+        } else {
             mwrapAdapter.addHeaderView(view);
         }
     }

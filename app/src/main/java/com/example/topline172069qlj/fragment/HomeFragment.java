@@ -1,6 +1,7 @@
 package com.example.topline172069qlj.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 import com.example.topline172069qlj.R;
+import com.example.topline172069qlj.activity.PythonActivity;
 import com.example.topline172069qlj.adapter.AdBannerAdapter;
 import com.example.topline172069qlj.adapter.HomeListAdapter;
 import com.example.topline172069qlj.bean.NewsBean;
@@ -141,15 +144,25 @@ public class HomeFragment extends Fragment {
       recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
       adapter=new HomeListAdapter(getActivity());//列表数据适配器
       recycleView.setAdapter(adapter);
-      View headView=inflater.inflate(R.layout.head_view,container,false);
+    //  View headView=inflater.inflate(R.layout.head_view,container,false);
       //recycleView.addHeaderView(headView);//添加头部
-       // adBannerLay=headView.findViewById(R.id.adbanner_layout);
+     //   adBannerLay=headView.findViewById(R.id.adbanner_layout);
         adPager =(ViewPager) view.findViewById(R.id.slidingAdvertBanner);
         ada=new AdBannerAdapter(getActivity().getSupportFragmentManager());
         adPager.setAdapter(ada);
        // resetSize();
+
+        LinearLayout ll_python=view.findViewById(R.id.ll_python);
+        ll_python.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), PythonActivity.class);
+                startActivity(intent);
+            }
+        });
+
       return view;
-    }
+}
 
     private void resetSize() {
         int sw = UtilsHelper.getScreenWidth(getActivity());//屏幕宽度
@@ -159,6 +172,5 @@ public class HomeFragment extends Fragment {
         adlp.height = adLheight;//设置高度
         adBannerLay.setLayoutParams(adlp);
     }
-
 
 }

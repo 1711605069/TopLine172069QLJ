@@ -1,6 +1,8 @@
 package com.example.topline172069qlj.utis;
 
+import com.example.topline172069qlj.activity.PythonActivity;
 import com.example.topline172069qlj.bean.NewsBean;
+import com.example.topline172069qlj.bean.PythonBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,5 +36,15 @@ public class JsonParse {//p68 单例模式，只有一个对象 对象由构造�
         //把获取到的信息集合存到newsList中
         List<NewsBean> newsList=gson.fromJson(json,listType);
         return newsList;
+    }
+
+    public List<PythonBean> getPythonList(String json){
+        //使用gson库解析JSON数据
+        Gson gson=new Gson();
+        //创建一个TypeToken 的匿名子类对象,并调用对象的getType（）方法
+        Type listType=new TypeToken<List<PythonBean>>() {}.getType();
+        //把获取到的信息集合到PythonList中
+        List<PythonBean> pythonList=gson.fromJson(json,listType);
+        return pythonList;
     }
 }

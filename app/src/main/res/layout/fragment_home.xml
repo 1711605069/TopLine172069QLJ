@@ -16,11 +16,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#f6f6f6">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
- <!--       <Te
+            android:layout_height="match_parent">
+            <include
+                layout="@layout/head_view"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+    <!--       <Te
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

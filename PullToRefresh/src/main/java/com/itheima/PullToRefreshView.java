@@ -371,6 +371,8 @@ public class PullToRefreshView extends ViewGroup {
         mListener = listener;
     }
 
+
+
     public interface OnRefreshListener {
         void onRefresh();
     }
