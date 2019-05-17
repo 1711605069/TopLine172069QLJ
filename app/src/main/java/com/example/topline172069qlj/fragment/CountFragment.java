@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.topline172069qlj.AndroidCountActivity;
+import com.example.topline172069qlj.JavaCountActivity;
 import com.example.topline172069qlj.R;
 import com.example.topline172069qlj.utis.BuilderManager;
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
@@ -54,14 +56,14 @@ public class CountFragment extends Fragment {
                     @Override
                     public void onBoomButtonClick(int index) {
                         switch (index) {
-//                            case 0:   //跳转到Android统计详情界面
-//                                Intent android = new Intent(getActivity(), AndroidCountActivity.class);
-//                                startActivity(android);
-//                                break;
-//                            case 1:   //跳转到Java统计详情界面
-//                                Intent java = new Intent(getActivity(), JavaCountActivity.class);
-//                                startActivity(java);
-//                                break;
+                            case 0:   //跳转到Android统计详情界面
+                                Intent android = new Intent(getActivity(), AndroidCountActivity.class);
+                                startActivity(android);
+                                break;
+                            case 1:   //跳转到Java统计详情界面
+                                Intent java = new Intent(getActivity(), JavaCountActivity.class);
+                                startActivity(java);
+                                break;
                         }
                     }
                 }));
