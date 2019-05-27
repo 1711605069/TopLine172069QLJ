@@ -3,6 +3,7 @@ package com.example.topline172069qlj.utis;
 import com.example.topline172069qlj.activity.PythonActivity;
 import com.example.topline172069qlj.bean.NewsBean;
 import com.example.topline172069qlj.bean.PythonBean;
+import com.example.topline172069qlj.bean.VideoBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -46,5 +47,13 @@ public class JsonParse {//p68 单例模式，只有一个对象 对象由构造�
         //把获取到的信息集合到PythonList中
         List<PythonBean> pythonList=gson.fromJson(json,listType);
         return pythonList;
+    }
+    public List<VideoBean> getVideoList(String json){
+        //使用gson库解析JSON数据
+        Gson gson=new Gson();
+        Type listType=new TypeToken<List<VideoBean>>(){
+        }.getType();
+        List<VideoBean>  videoList=gson.fromJson(json,listType);
+        return videoList;
     }
 }

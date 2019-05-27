@@ -12,49 +12,42 @@ import com.example.topline172069qlj.adapter.WrapAdapter;
 import java.util.ArrayList;
 
 public class WrapRecyclerView extends RecyclerView {
-    private WrapAdapter mwrapAdapter;
-    private ArrayList<View> mTmpHeaderView=new ArrayList<>();
-
-    public WrapRecyclerView(@NonNull Context context, WrapAdapter mwrapAdapter) {
+    private WrapAdapter mWrapAdapter;
+    private ArrayList<View> mTmpHeaderView = new ArrayList<>();
+    public WrapRecyclerView(@NonNull Context context) {
         super(context);
-        this.mwrapAdapter = mwrapAdapter;
-        //
     }
 
-    public WrapRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, WrapAdapter mwrapAdapter) {
+    public WrapRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.mwrapAdapter = mwrapAdapter;
     }
 
-    public WrapRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle, WrapAdapter mwrapAdapter) {
+    public WrapRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        this.mwrapAdapter = mwrapAdapter;
     }
-
     @Override
-    public void setAdapter(Adapter adapter){
-        if(adapter instanceof  WrapAdapter){
-            mwrapAdapter=(WrapAdapter) adapter;
+    public void setAdapter(Adapter adapter) {
+        if (adapter instanceof WrapAdapter) {
+            mWrapAdapter = (WrapAdapter) adapter;
             super.setAdapter(adapter);
-        }else {
-            mwrapAdapter=new WrapAdapter(adapter);
-            for (View view:mTmpHeaderView){
-                mwrapAdapter.addHeaderView(view);
+        } else {
+            mWrapAdapter = new WrapAdapter(adapter);
+            for (View view : mTmpHeaderView) {
+                mWrapAdapter.addHeaderView(view);
             }
-            if (mTmpHeaderView.size() > 0){
+            if (mTmpHeaderView.size() > 0) {
                 mTmpHeaderView.clear();
             }
-            super.setAdapter(mwrapAdapter);
+            super.setAdapter(mWrapAdapter);
         }
-
     }
     public void addHeaderView(View view) {
         if (null == view) {
             throw new IllegalArgumentException("the view to add must not be null!");
-        } else if (mwrapAdapter == null) {
+        } else if (mWrapAdapter == null) {
             mTmpHeaderView.add(view);
         } else {
-            mwrapAdapter.addHeaderView(view);
+            mWrapAdapter.addHeaderView(view);
         }
     }
 }
